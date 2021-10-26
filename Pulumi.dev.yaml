@@ -1,0 +1,9 @@
+encryptionsalt: v1:tWq31ej10io=:v1:lD4rN12zGlDCQptW:8ek0rshC7FjWQDkwRE5rRT//e2HOTA==
+config:
+  ephemeral-github-runner:machineImage: nvidia-gpu-cloud-image-20200629
+  ephemeral-github-runner:machineType: nvidia-tesla-v100
+  ephemeral-github-runner:repo: rtrack
+  ephemeral-github-runner:repoOwner: pavlovic-ivan
+  ephemeral-github-runner:ghToken: test
+  ephemeral-github-runner:ghRunnerName: Orville
+  ephemeral-github-runner:zone: europe-west4
