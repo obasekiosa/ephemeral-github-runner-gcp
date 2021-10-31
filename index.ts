@@ -1,5 +1,7 @@
-import { startupScript } from "./startupScript";
-// import { computeInstance } from "./instance";
+import { computeInstance } from "./instance";
+import { network } from "./network";
+import { firewall } from "./firewall";
 
-export const script = startupScript;
-// export const instanceName = computeInstance.name;
+export const instanceName = computeInstance.name;
+export const networkName = network.name;
+export const firewallName = firewall.name;

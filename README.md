@@ -33,3 +33,7 @@ pulumi config set gcp:<option>
 
 # node -v
 v14.16.1
+
+export PULUMI_CONFIG_PASSPHRASE=
+export GOOGLE_PROJECT=
+how to provide creds
