@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as gcp from "@pulumi/gcp";
 import { network } from "./network";
-import { startupScript } from "./startupScript";
+import { startupScripts } from "./startupScript";
 
 let config = new pulumi.Config();
 
@@ -15,11 +15,6 @@ let scheduling = {
     preemptible: true,
     onHostMaintenance: "TERMINATE",
     automaticRestart: false
-};
-
-let metadata ={
-    "ssh-keys": `${config.require("sshKeys")}`,
-    "startup-script": startupScript
 };
 
 let bootDisk = {
@@ -38,20 +33,25 @@ let serviceAccount = {
     email: config.require("serviceAccountEmail")
 };
 
-let instanceArguments = {
-    machineType: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}/machineTypes/${config.require("machineType")}`,
-    zone: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}`,
-    labels: labels,
-    scheduling: scheduling,
-    metadata: metadata,
-    networkInterfaces: [{
-        network: network.id,
-        accessConfigs: [{}] // accessConfigs must include a single empty config to request an ephemeral IP
-    }],
-    bootDisk: bootDisk,
-    allowStoppingForUpdate: true,
-    serviceAccount: serviceAccount
-};
-
 // Create a Virtual Machine Instance
-export const computeInstance = new gcp.compute.Instance(`${ghRunnerName}-instance`, instanceArguments);
+let instances: gcp.compute.Instance[] = [];
+for(let i = 0; i < +config.require("runnersCount"); i++){
+    instances.push(new gcp.compute.Instance(`${ghRunnerName}-instance-${i}`, {
+        machineType: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}/machineTypes/${config.require("machineType")}`,
+        zone: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}`,
+        labels: labels,
+        scheduling: scheduling,
+        metadata: {
+            "ssh-keys": `${config.require("sshKeys")}`,
+            "startup-script": startupScripts[i]
+        },
+        networkInterfaces: [{
+            network: network.id,
+            accessConfigs: [{}] // accessConfigs must include a single empty config to request an ephemeral IP
+        }],
+        bootDisk: bootDisk,
+        allowStoppingForUpdate: true,
+        serviceAccount: serviceAccount
+    }));
+}
+export const computeInstances = instances;

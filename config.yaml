@@ -1,16 +1,18 @@
+encryptionsalt: v1:dGJ6pBlapcY=:v1:LuAuYELs/MV8bqyw:7ND8LlKplq5CJsJ7+qZEGEeZWa3pRg==
 config:
-  # ephemeral-github-runner:machineImage: nvidia-gpu-cloud-image-20200629
-  # ephemeral-github-runner:machineType: nvidia-tesla-v100
-  ephemeral-github-runner:machineImage: projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20211021
+  ephemeral-github-runner:bootDiskSizeInGB: "100"
+  ephemeral-github-runner:bootDiskType: pd-balanced
+  ephemeral-github-runner:env: dev
+  ephemeral-github-runner:ghRunnerName: orville
+  ephemeral-github-runner:ghToken: test
+  ephemeral-github-runner:machineImage: projects/ml-images/global/images/c0-deeplearning-common-cu110-v20211022-debian-10
+  # ephemeral-github-runner:machineImage: projects/debian-cloud/global/images/debian-10-buster-v20211105
   ephemeral-github-runner:machineType: e2-micro
   ephemeral-github-runner:repo: rtrack
   ephemeral-github-runner:repoOwner: pavlovic-ivan
-  ephemeral-github-runner:ghToken: test
-  ephemeral-github-runner:ghRunnerName: orville
-  ephemeral-github-runner:zone: europe-west4-a
-  ephemeral-github-runner:env: dev
-  ephemeral-github-runner:sshKeys: ivanpavlovic:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDDkhVw8gHJtI8JwrgCbEOXGeYVRSW27+laPlT/D5MExzixWMjOJpKlj7rEszoD34gl1A229H0IwzMyjioPLe3NsQ0NorRQkBZm+BZqZJvGKf0wu9ICF2wGTzT28YGER6BrZ4nRbSrJQMLcmOZMLYBaGoCrfdpEv6+KF/H/FptERgmO4l5I10GFyr67kGqzoRH5FaOB2Ki+IyXVzpMGvt2EieySCV1LG0li+qVc2AWMm41RY6+o/qZphdZNO0dV90ePxrftAmqTNWF9EixCHCYQquDq1ONP4Vt6JI5EVhJn0ZTsvRs8hoYvUbw+Q4GyRbtSWwO3eohlBtRs84mpuP7RDTHGe4XRsizL7HLn85MWFtkKammmgg6wVgg9rmSLbGeim2sHZGDE1LCRFMiKR8++M8awub4BQGEv6Ux7ZQsA1MkiA7tBPZOpjbLies9jQTKX2eQ9wtwx8xVZoyi3BNEM2zPE3Dlnls5PsaJh7GCHA9IAKXz2r+R4sMK7oHcM+f4mZAyteNMvrlWQgvlUd9nv9+DWVfuHgV50jyOInNTrAbBpCNahzfEp3cXGkw0Zp/P0sgQbyZqDu4PC02O8NfpaVD66NTeHKLUSX/ozddst7VIi4eLAPsIyDfJoPK3kqTJM/6zlaxBnejQWRa6vjJwImqconw9jAeG12UExqrdYjw== ivanpavlovic@Ivans-MacBook-Pro.local
-  ephemeral-github-runner:serviceAccountScopes: default
+  ephemeral-github-runner:runnersCount: "4"
   ephemeral-github-runner:serviceAccountEmail: 121448003753-compute@developer.gserviceaccount.com
-  ephemeral-github-runner:bootDiskSizeInGB: 10
-  ephemeral-github-runner:bootDiskType: pd-balanced
+  ephemeral-github-runner:serviceAccountScopes: default
+  ephemeral-github-runner:sshKeys: ivanpavlovic:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDDkhVw8gHJtI8JwrgCbEOXGeYVRSW27+laPlT/D5MExzixWMjOJpKlj7rEszoD34gl1A229H0IwzMyjioPLe3NsQ0NorRQkBZm+BZqZJvGKf0wu9ICF2wGTzT28YGER6BrZ4nRbSrJQMLcmOZMLYBaGoCrfdpEv6+KF/H/FptERgmO4l5I10GFyr67kGqzoRH5FaOB2Ki+IyXVzpMGvt2EieySCV1LG0li+qVc2AWMm41RY6+o/qZphdZNO0dV90ePxrftAmqTNWF9EixCHCYQquDq1ONP4Vt6JI5EVhJn0ZTsvRs8hoYvUbw+Q4GyRbtSWwO3eohlBtRs84mpuP7RDTHGe4XRsizL7HLn85MWFtkKammmgg6wVgg9rmSLbGeim2sHZGDE1LCRFMiKR8++M8awub4BQGEv6Ux7ZQsA1MkiA7tBPZOpjbLies9jQTKX2eQ9wtwx8xVZoyi3BNEM2zPE3Dlnls5PsaJh7GCHA9IAKXz2r+R4sMK7oHcM+f4mZAyteNMvrlWQgvlUd9nv9+DWVfuHgV50jyOInNTrAbBpCNahzfEp3cXGkw0Zp/P0sgQbyZqDu4PC02O8NfpaVD66NTeHKLUSX/ozddst7VIi4eLAPsIyDfJoPK3kqTJM/6zlaxBnejQWRa6vjJwImqconw9jAeG12UExqrdYjw==
+    ivanpavlovic@Ivans-MacBook-Pro.local
+  ephemeral-github-runner:zone: europe-west4-a

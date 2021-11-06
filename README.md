@@ -37,3 +37,7 @@ v14.16.1
 export PULUMI_CONFIG_PASSPHRASE=
 export GOOGLE_PROJECT=
 how to provide creds
+
+```
+pulumi login gs://ilgpu_pulumi_state
+```
