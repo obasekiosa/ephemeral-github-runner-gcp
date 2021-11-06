@@ -1,4 +1,3 @@
-encryptionsalt: v1:dGJ6pBlapcY=:v1:LuAuYELs/MV8bqyw:7ND8LlKplq5CJsJ7+qZEGEeZWa3pRg==
 config:
   ephemeral-github-runner:bootDiskSizeInGB: "100"
   ephemeral-github-runner:bootDiskType: pd-balanced
