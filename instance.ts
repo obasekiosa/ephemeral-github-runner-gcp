@@ -41,10 +41,7 @@ for(let i = 0; i < +config.require("runnersCount"); i++){
         zone: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}`,
         labels: labels,
         scheduling: scheduling,
-        metadata: {
-            "ssh-keys": `${config.require("sshKeys")}`,
-            "startup-script": startupScripts[i]
-        },
+        metadata: { "startup-script": pulumi.secret(startupScripts[i]) },
         networkInterfaces: [{
             network: network.id,
             accessConfigs: [{}] // accessConfigs must include a single empty config to request an ephemeral IP
