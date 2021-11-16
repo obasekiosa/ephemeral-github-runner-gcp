@@ -23,13 +23,13 @@ let bootDisk = {
     mode: "READ_WRITE",
     initializeParams: {
         size: +config.require("bootDiskSizeInGB"),
-        // type: config.require("bootDiskType"),
+        type: config.require("bootDiskType"),
         image: config.require("machineImage")
     }
 };
 
 let serviceAccount = {
-    scopes: [],
+    scopes: [ config.require("serviceAccountScopes") ],
     email: config.require("serviceAccountEmail")
 };
 
@@ -37,11 +37,13 @@ let serviceAccount = {
 let instances: gcp.compute.Instance[] = [];
 for(let i = 0; i < +config.require("runnersCount"); i++){
     instances.push(new gcp.compute.Instance(`${ghRunnerName}-instance-${i}`, {
-        machineType: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}/machineTypes/${config.require("machineType")}`,
-        zone: `projects/${process.env.GOOGLE_PROJECT}/zones/${config.require("zone")}`,
+        machineType: config.require("machineType"),
+        zone: config.require("zone"),
         labels: labels,
         scheduling: scheduling,
-        metadata: { "startup-script": pulumi.secret(startupScripts[i]) },
+        metadata: { 
+            "startup-script": pulumi.secret(startupScripts[i])
+        },
         networkInterfaces: [{
             network: network.id,
             accessConfigs: [{}] // accessConfigs must include a single empty config to request an ephemeral IP

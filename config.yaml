@@ -1,15 +1,16 @@
 encryptionsalt: v1:c+R1TgvyWag=:v1:GjeOoWIbcj0TUr0M:DpC5yDhjTOywSrexH4+PIcsxlZw2tw==
 config:
-  ephemeral-github-runner:bootDiskSizeInGB: "100"
+  ephemeral-github-runner:bootDiskSizeInGB: 200
   ephemeral-github-runner:bootDiskType: pd-balanced
   ephemeral-github-runner:env: dev
   ephemeral-github-runner:ghRunnerName: orville
-  ephemeral-github-runner:ghToken: test
-  ephemeral-github-runner:machineImage: projects/ml-images/global/images/c0-deeplearning-common-cu110-v20211022-debian-10
-  ephemeral-github-runner:machineType: e2-micro
+  ephemeral-github-runner:machineImage: projects/gr-oss-ilgpu/global/images/c0-deeplearning-common-cu113-v20211105-debian-10-ghrv22833
+  # ephemeral-github-runner:machineType: a2-highgpu-2g // * Error waiting for instance to create: Quota 'NVIDIA_A100_GPUS' exceeded.  Limit: 0.0 in region europe-west4.
+  ephemeral-github-runner:machineType: n1-standard-1
   ephemeral-github-runner:repo: rtrack
   ephemeral-github-runner:repoOwner: pavlovic-ivan
-  ephemeral-github-runner:runnersCount: "1"
-  ephemeral-github-runner:serviceAccountEmail: 121448003753-compute@developer.gserviceaccount.com
-  ephemeral-github-runner:serviceAccountScopes: default
+  ephemeral-github-runner:runnersCount: 1
+  ephemeral-github-runner:serviceAccountEmail: pulumi@gr-oss-ilgpu.iam.gserviceaccount.com
+  ephemeral-github-runner:serviceAccountScopes: https://www.googleapis.com/auth/cloud-platform
   ephemeral-github-runner:zone: europe-west4-a
+  ephemeral-github-runner:runnerVersion: 2.283.3

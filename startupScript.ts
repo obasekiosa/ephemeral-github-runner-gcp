@@ -13,7 +13,8 @@ for(let i = 0; i < +config.require("runnersCount"); i++){
             repo: config.require("repo"),
             ghRunnerName: `${config.require("ghRunnerName")}-${i}`,
             personalAccessToken: process.env.PAT,
-            token: token
+            token: token,
+            runnerVersion: config.require("runnerVersion")
         };
         const template = readFileSync('./register-runner.sh', 'utf-8');
         return Mustache.render(template, templateView);

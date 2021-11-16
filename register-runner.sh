@@ -1,20 +1,21 @@
 #!/bin/bash
 
-useradd -m ghrunner
-cd /home/ghrunner
-mkdir -p workdir/actions-runner && cd workdir/actions-runner
-curl -O -L https://github.com/actions/runner/releases/download/v2.283.3/actions-runner-linux-x64-2.283.3.tar.gz
-tar xzf ./actions-runner-linux-x64-2.283.3.tar.gz
-chown -R ghrunner ~ghrunner && /home/ghrunner/workdir/actions-runner/bin/installdependencies.sh
-
 sh -c 'cat <<EOF> /etc/systemd/system/ghrunner-reg.service
 [Unit]
-Description=Deregister GitHub Runner
+Description=Register GitHub Runner
 
 [Service]
 User=ghrunner
 Type=oneshot
-ExecStart=-/bin/bash -c "cd /home/ghrunner/workdir/actions-runner && ./config.sh --url https://github.com/{{repoOwner}}/{{repo}} --token {{token}} --name {{ghRunnerName}} --work _work --runnergroup default --labels self-hosted --ephemeral && ./run.sh"
+WorkingDirectory=/home/ghrunner/workdir/actions-runner
+ExecStartPre=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/config.sh --url https://github.com/{{repoOwner}}/{{repo}} \
+    --token {{token}} \
+    --name {{ghRunnerName}} \
+    --work _work \
+    --runnergroup default \
+    --labels self-hosted \
+    --ephemeral"
+ExecStart=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/run.sh"
 
 [Install]
 WantedBy=multi-user.target
@@ -22,15 +23,19 @@ EOF'
 
 sh -c 'cat <<EOF> /etc/systemd/system/ghrunner-dereg.service
 [Unit]
-Description=Register GitHub Runner
+Description=Deregister GitHub Runner
+DefaultDependencies=no
+Before=shutdown.target
 
 [Service]
 User=ghrunner
 Type=oneshot
-ExecStart=-/bin/bash -c "cd /home/ghrunner/workdir/actions-runner && ./config.sh remove --token {{token}}"
+WorkingDirectory=/home/ghrunner/workdir/actions-runner
+ExecStart=/bin/bash -c "/home/ghrunner/workdir/actions-runner/config.sh remove --token {{token}}"
+TimeoutStartSec=0
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=shutdown.target
 EOF'
 
 sudo systemctl daemon-reload
