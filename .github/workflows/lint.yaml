@@ -7,8 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Prepare
-        run: |
-          npm ci
-          npm update
+        run: npm ci
       - name: Lint
-        run: tslint --project .
+        run: npm run tslint --project .
