@@ -2,18 +2,19 @@ import * as pulumi from "@pulumi/pulumi";
 import { readFileSync } from 'fs';
 import { registrationToken } from "./token-fetcher";
 
-var Mustache = require("mustache");
-let config = new pulumi.Config();
+/* tslint:disable-next-line:no-var-requires */
+const Mustache = require("mustache");
+const config = new pulumi.Config();
 
-let scripts = [];
+const scripts = [];
 for(let i = 0; i < +config.require("runnersCount"); i++){
     scripts.push(registrationToken.then(token => {
-        let templateView = { 
+        const templateView = {
             repoOwner: config.require("repoOwner"),
             repo: config.require("repo"),
             ghRunnerName: `${config.require("ghRunnerName")}-${i}`,
             personalAccessToken: process.env.PAT,
-            token: token,
+            token,
             runnerVersion: config.require("runnerVersion")
         };
         const template = readFileSync('./register-runner.sh', 'utf-8');
