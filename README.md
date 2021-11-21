@@ -1,4 +1,4 @@
-[![release](https://badgen.net/github/release/pavlovic-ivan/ephemeral-github-runner?icon=github&color=cyan)](https://github.com/pavlovic-ivan/ephemeral-github-runner/releases/tag/v2.283.3)
+[![release](https://badgen.net/github/release/pavlovic-ivan/ephemeral-github-runner?icon=github&color=cyan)](https://github.com/pavlovic-ivan/ephemeral-github-runner/releases/tag/v1.0.0)
 [![releases](https://badgen.net/github/releases/pavlovic-ivan/ephemeral-github-runner?icon=github&color=orange)](https://github.com/pavlovic-ivan/ephemeral-github-runner/releases)
 [![licence](https://badgen.net/github/license/pavlovic-ivan/ephemeral-github-runner?icon=github)](https://github.com/pavlovic-ivan/ephemeral-github-runner/blob/main/LICENSE.md)
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
