@@ -1,3 +1,5 @@
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
 # ephemeral-github-runner
 A Pulumi TypeScript project that deploys ephemeral Github runner
 
