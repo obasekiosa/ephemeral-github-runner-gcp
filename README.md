@@ -1,7 +1,7 @@
 [![releases](https://badgen.net/github/releases/pavlovic-ivan/ephemeral-github-runner?icon=github&color=orange)](https://github.com/pavlovic-ivan/ephemeral-github-runner/releases)
 [![licence](https://badgen.net/github/license/pavlovic-ivan/ephemeral-github-runner?icon=github)](https://github.com/pavlovic-ivan/ephemeral-github-runner/blob/main/LICENSE.md)
-[![lint](https://github.com/pavlovic-ivan/ephemeral-github-runner/actions/workflows/lint.yaml/badge.svg?style=flat)](https://github.com/pavlovic-ivan/ephemeral-github-runner/actions)
-[![pulumi](https://badgen.net/npm/v/@pulumi/pulumi?style=flat)](https://www.pulumi.com)
+[![lint](https://github.com/pavlovic-ivan/ephemeral-github-runner/actions/workflows/lint.yaml/badge.svg)](https://github.com/pavlovic-ivan/ephemeral-github-runner/actions)
+[![pulumi](https://badgen.net/npm/v/@pulumi/pulumi)](https://www.pulumi.com)
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 # ephemeral-github-runner
