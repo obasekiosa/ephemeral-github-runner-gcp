@@ -2,6 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import { readFileSync } from 'fs';
 import { registrationToken } from "./token-fetcher";
 
+/* tslint:disable-next-line:no-var-requires */
 const Mustache = require("mustache");
 const config = new pulumi.Config();
 
