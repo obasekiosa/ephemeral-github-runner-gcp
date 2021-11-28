@@ -13,7 +13,7 @@ ExecStartPre=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/config.sh --ur
     --name {{ghRunnerName}} \
     --work _work \
     --runnergroup default \
-    --labels self-hosted \
+    --labels self-hosted,cuda \
     --ephemeral"
 ExecStart=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/run.sh"
 
