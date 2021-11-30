@@ -34,7 +34,6 @@ const serviceAccount = {
 export const instanceTemplate = new gcp.compute.InstanceTemplate(`${ghRunnerName}-instance-template`, {
     machineType: config.require("machineType"),
     labels,
-    // zone: config.require("zone"),
     scheduling,
     disks: [ bootDisk ],
     metadata: {

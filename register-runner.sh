@@ -10,10 +10,11 @@ Type=oneshot
 WorkingDirectory=/home/ghrunner/workdir/actions-runner
 ExecStartPre=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/config.sh --url https://github.com/{{repoOwner}}/{{repo}} \
     --token {{token}} \
-    --name {{ghRunnerName}} \
+    --name {{ghRunnerName}}-'$(/usr/bin/echo $RANDOM)' \
     --work _work \
     --runnergroup default \
-    --labels self-hosted,cuda \
+    --labels cuda \
+    --runasservice \
     --ephemeral"
 ExecStart=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/run.sh"
 
