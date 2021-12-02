@@ -9,7 +9,7 @@ const computeFirewall = new gcp.compute.Firewall(`${ghRunnerName}-firewall`, {
     network: network.id,
     allows: [{
         protocol: "tcp",
-        ports: [ "80" ],
+        ports: [ "22" ],
     }],
 });
 
