@@ -12,8 +12,7 @@ export const startupScript = registrationToken.then(token => {
         repo: config.require("repo"),
         ghRunnerName: `${config.require("ghRunnerName")}`,
         personalAccessToken: process.env.PAT,
-        token,
-        runnerVersion: config.require("runnerVersion")
+        token
     };
     const template = readFileSync('./register-runner.sh', 'utf-8');
     return Mustache.render(template, templateView);
