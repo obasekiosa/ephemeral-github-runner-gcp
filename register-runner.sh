@@ -11,6 +11,7 @@ WorkingDirectory=/home/ghrunner/workdir/actions-runner
 TasksMax=100%
 LimitCPU=infinity
 LimitMEMLOCK=infinity
+SyslogIdentifier=ghrunner-reg
 ExecStartPre=-/bin/bash -c "/home/ghrunner/workdir/actions-runner/config.sh --url https://github.com/{{repoOwner}}/{{repo}} \
     --token {{token}} \
     --name {{ghRunnerName}}-'$(/usr/bin/echo $RANDOM)' \
