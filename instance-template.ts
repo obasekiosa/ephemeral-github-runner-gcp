@@ -28,7 +28,7 @@ const bootDisk = {
 
 const serviceAccount = {
     scopes: [ config.require("serviceAccountScopes") ],
-    email: config.require("serviceAccountEmail")
+    email: process.env.GCE_SA_EMAIL
 };
 
 export const instanceTemplate = new gcp.compute.InstanceTemplate(`${ghRunnerName}-instance-template`, {
