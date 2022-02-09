@@ -8,7 +8,6 @@ const config = new pulumi.Config();
 
 export const startupScript = registrationToken.then(token => {
     const templateView = {
-        repoOwner: config.require("repoOwner"),
         repo: config.require("repo"),
         ghRunnerName: `${config.require("ghRunnerName")}`,
         personalAccessToken: process.env.PAT,

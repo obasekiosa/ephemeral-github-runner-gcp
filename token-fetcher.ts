@@ -3,7 +3,7 @@ import axios from "axios";
 
 const config = new pulumi.Config();
 const token: string = "";
-const githubDomain = `https://api.github.com/repos/${config.require("repoOwner")}/${config.require("repo")}/actions/runners/registration-token`;
+const githubDomain = `https://api.github.com/repos/${config.require("repo")}/actions/runners/registration-token`;
 const registrationTokenRequestConfig = {
     headers: {
         "Authorization": `token ${process.env.PAT}`,
