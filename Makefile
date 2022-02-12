@@ -11,8 +11,8 @@ up:
 down:
 	pulumi stack select ${stack}
 	pulumi destroy --config-file ${config} ${auto-approve}
-	pulumi stack rm ${stack} ${auto-approve}
 	pulumi config rm ephemeral-github-runner:repo --config-file ${config}
+	pulumi stack rm ${stack} ${auto-approve}
 
 login:
 	pulumi login $(GS_BUCKET)
