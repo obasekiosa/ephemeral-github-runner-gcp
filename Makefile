@@ -1,15 +1,18 @@
 SHELL:=/bin/bash
 stack=dev1
-include .env
+config=config.yaml
+auto-approve?=
+
 up:
-	pulumi config set ephemeral-github-runner:repo $(REPO) --config-file config.yaml
-	pulumi stack select ${stack}
-	pulumi up --config-file config.yaml
+	pulumi stack init -s ${stack}
+	pulumi config set ephemeral-github-runner:repo $(REPO) --config-file ${config}
+	pulumi up --diff --config-file ${config} ${auto-approve}
 
 down:
 	pulumi stack select ${stack}
-	pulumi destroy --config-file config.yaml -y
-	pulumi config rm ephemeral-github-runner:repo --config-file config.yaml
+	pulumi destroy --config-file ${config} ${auto-approve}
+	pulumi stack rm ${stack} ${auto-approve}
+	pulumi config rm ephemeral-github-runner:repo --config-file ${config}
 
 login:
-	pulumi login $(GOOGLE_CLOUD_BUCKET)
+	pulumi login $(GS_BUCKET)
