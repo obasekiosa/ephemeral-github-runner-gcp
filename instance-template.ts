@@ -8,7 +8,6 @@ const config = new pulumi.Config();
 const ghRunnerName = config.require("ghRunnerName");
 const labels = {
     "provided-by": "pulumi",
-    "env": `${config.require("env")}`
 };
 
 const scheduling = {
