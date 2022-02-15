@@ -48,8 +48,9 @@ source .env
 make login
 make up
 ```
+After running this, Pulumi will prompt with `yes` and `no` options, if you wish to confirm the changes. Selecting `yes`, Pulumi will start the deployment.
 
-To destroy runners, make sure you are in the project root, and execute:
+Assuming you have selected `yes` above, and the deployment is done, once ready to destroy runners, make sure you are in the project root, and execute:
 ```
 make down
 ```
