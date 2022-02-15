@@ -7,7 +7,7 @@ const ghRunnerName = config.require("ghRunnerName");
 
 export const instanceGroup = new gcp.compute.InstanceGroupManager(`${ghRunnerName}-instance-group`, {
     baseInstanceName: ghRunnerName,
-    zone: config.require("zone"),
+    zone: process.env.GOOGLE_ZONE,
     versions: [{
         instanceTemplate: instanceTemplate.id,
     }],
