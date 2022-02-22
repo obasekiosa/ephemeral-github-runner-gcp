@@ -1,5 +1,6 @@
 /bin/
 /node_modules/
 .env
-key.json
 config.yaml
+gcp.json
+ghapp.pem
