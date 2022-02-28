@@ -3,3 +3,4 @@
 .env
 key.json
 config.yaml
+Pulumi.*.yaml

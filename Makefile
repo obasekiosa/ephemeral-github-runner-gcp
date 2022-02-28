@@ -3,8 +3,14 @@ stack=dev1
 config=config.yaml
 auto-approve?=
 
-up:
+init:
 	pulumi stack init -s ${stack}
+	mv Pulumi.${stack}.yaml ${config}
+	pulumi config set ephemeral-github-runner:repo $(REPO) --config-file ${config}
+	pulumi up --diff --config-file ${config} ${auto-approve}
+
+up:
+	pulumi stack select ${stack}
 	pulumi config set ephemeral-github-runner:repo $(REPO) --config-file ${config}
 	pulumi up --diff --config-file ${config} ${auto-approve}
 
