@@ -1,6 +1,6 @@
 #!/bin/bash
 
-su - ghrunner -c "cd workdir/actions-runner && \
+su - runner -c "cd runner && \
                   ./config.sh \
                     --url https://github.com/{{owner}}/{{repo}} \
                     --token {{token}} \
@@ -9,6 +9,6 @@ su - ghrunner -c "cd workdir/actions-runner && \
                     --unattended \
                     --ephemeral"
 
-cd /home/ghrunner/workdir/actions-runner
-./svc.sh install ghrunner
+cd ~runner/runner
+./svc.sh install runner
 ./svc.sh start
