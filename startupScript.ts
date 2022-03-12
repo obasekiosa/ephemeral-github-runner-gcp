@@ -8,11 +8,15 @@ const config = new pulumi.Config();
 
 export const startupScript = registrationToken.then(token => {
     const templateView = {
+        owner: config.require("owner"),
         repo: config.require("repo"),
-        ghRunnerName: `${config.require("ghRunnerName")}`,
-        personalAccessToken: process.env.PAT,
-        token
+        labels: config.require("labels"),
+        token,
     };
     const template = readFileSync('./register-runner.sh', 'utf-8');
+    // Disable all escaping
+    Mustache.escape = (text: string): string => {
+        return text;
+    };
     return Mustache.render(template, templateView);
 });

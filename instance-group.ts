@@ -3,13 +3,12 @@ import * as gcp from "@pulumi/gcp";
 import { instanceTemplate } from "./instance-template";
 
 const config = new pulumi.Config();
-const ghRunnerName = config.require("ghRunnerName");
+const baseName = pulumi.getStack();
 
-export const instanceGroup = new gcp.compute.InstanceGroupManager(`${ghRunnerName}-instance-group`, {
-    baseInstanceName: ghRunnerName,
-    zone: process.env.GOOGLE_ZONE,
+export const instanceGroup = new gcp.compute.InstanceGroupManager(`${baseName}-instance-group`, {
+    baseInstanceName: baseName,
+    targetSize: config.requireNumber("runnersCount"),
     versions: [{
         instanceTemplate: instanceTemplate.id,
     }],
-    targetSize: +config.require("runnersCount")
 });
