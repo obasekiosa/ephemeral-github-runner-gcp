@@ -3,4 +3,4 @@
 .env
 config.yaml
 gcp.json
-ghapp.pem
+*.pem
