@@ -3,7 +3,7 @@ import * as pulumi from "@pulumi/pulumi";
 import { launchTemplate } from './launch-template';
 
 const config = new pulumi.Config();
-const size = config.require("machineType");
+const baseName = pulumi.getStack();
 
 export const autoscalingGroup = launchTemplate.then(lt => {
     const availabilityZones = pulumi.output(aws.getAvailabilityZones({
