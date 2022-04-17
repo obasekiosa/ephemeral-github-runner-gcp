@@ -14,7 +14,7 @@ export const launchTemplate = startupScript.then(script => {
             name: "name",
             values: [ config.require("machineImage") ],
         }],
-        owners: ["099720109477"], // This owner ID is Amazon
+        owners: ["338683621076"]
     });
     
     const launchTemplateArgs: LaunchTemplateArgs = {
