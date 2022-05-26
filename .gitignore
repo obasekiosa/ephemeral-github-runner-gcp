@@ -7,4 +7,5 @@ config.yaml
 gcp.json
 *.pem
 *.cer
+ghapp.pem
 key.json
